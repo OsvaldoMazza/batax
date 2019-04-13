@@ -12,6 +12,7 @@ namespace BATAX
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        int count = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -24,6 +25,7 @@ namespace BATAX
 
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
+            
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -55,6 +57,13 @@ namespace BATAX
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-	}
+
+       
+        void Button_Clicked(object sender, System.EventArgs e)
+        {
+            count++;
+            ((Button)sender).Text = $"You clicked {count} times.";
+        }
+    }
 }
 
